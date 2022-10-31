@@ -1,0 +1,15 @@
+$black: #282828;
+$green: #348F58;
+$gold: #D9BF77;
+$red: #FF5C58;
+$grey: #f2f2f2;
+$color-background-dark: rgb(213,214,215);
+@mixin btn {
+    background-color: white;
+    color: $black;
+}
+
+
+button{
+    @include btn;
+}
