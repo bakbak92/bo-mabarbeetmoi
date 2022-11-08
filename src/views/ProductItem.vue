@@ -38,6 +38,10 @@
                     <p>Informations</p>
                     <MarkdownEditor v-model="product.informations"/>
                 </form-input>
+                <form-input>
+                    <p>Bienfaits</p>
+                    <MarkdownEditor v-model="product.goods"/>
+                </form-input>
             </form-row>
             <form-row>
                 <form-input>
@@ -136,6 +140,7 @@ export default {
                 isPublished: false,
                 price: 0,
                 description: null,
+                goods: null,
                 category: null,
                 medias: []
             },
