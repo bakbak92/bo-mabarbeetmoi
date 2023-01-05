@@ -17,6 +17,12 @@
                 <RouterLink to="/promos">Code promo</RouterLink>
             </li>
             <li>
+                <RouterLink to="/category">Catégorie</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/delivery">Livraison</RouterLink>
+            </li>
+            <li>
                 <span @click="logOut">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Se déconnecter
@@ -61,6 +67,9 @@ nav{
                 color: white;
                 text-decoration: none;
                 cursor: pointer;
+                &.router-link-active{
+                    color: $green;
+                }
             }
             span{
                 color: white;
