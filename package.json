@@ -12,6 +12,7 @@
     "@kyvg/vue3-notification": "^2.4.1",
     "firebase": "^9.12.1",
     "marked": "^4.1.1",
+    "moment": "^2.29.4",
     "pinia": "^2.0.23",
     "sass": "^1.57.1",
     "vue": "^3.2.41",

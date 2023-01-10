@@ -44,6 +44,11 @@ const router = createRouter({
       component: () => import("../views/ProductItem.vue")
     },
     {
+      path: "/customers/:id",
+      name: "customer",
+      component: () => import("../views/CustomerItem.vue")
+    },
+    {
       path: "/",
       redirect: to => {
         return {
