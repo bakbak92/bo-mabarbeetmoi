@@ -11,7 +11,7 @@
                 <p>Zone {{delivery.zone}}</p>
                 <form-row>
                     <form-input>
-                        <input type="number" 
+                        <input type="text" 
                         v-model="delivery.price"
                         >
                     </form-input>
@@ -21,6 +21,7 @@
                     </button-app>
                 </form-row>
             </form>
+            <p style="color: red; font-weight: 600">Mettre un "." pour les décimales</p>
         </div>
     </div>
 </template>
@@ -57,7 +58,7 @@ export default {
             if(!confirm("Etes vous sur de modifier le prix de livraison de la zone " + delivery.zone)){
                 return 
             }
-            setDoc(doc(db, "delivery", delivery.id), {price: delivery.price}, {merge: true})
+            setDoc(doc(db, "delivery", delivery.id), {price: parseFloat(delivery.price)}, {merge: true})
             .then(() => {
                 notify({
                     type: "success",

@@ -21,8 +21,8 @@
             </form-row>
             <form-row>
                 <form-input>
-                    <p>Prix</p>
-                    <input type="number" v-model="product.price">
+                    <p>Prix - <span style="font-style: italic;">Metre un "." pour les décimales</span></p>
+                    <input type="text" v-model="product.price">
                 </form-input>
                 <form-input>
                     <p>Stock</p>
@@ -318,6 +318,7 @@ export default {
             }
         },
         save(){
+            this.product.price = parseFloat(this.product.price)
             Promise.all([
                 this.saveImage(),
                 this.saveAllImages()

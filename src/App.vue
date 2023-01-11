@@ -24,7 +24,11 @@ export default {
     }).catch(() => {
       console.log("erreur");
       this.loading = false;
-      this.$router.push("/login")
+      if(window.location.pathname !== "/login"){
+        window.location.href = "/login"
+      }
+      //if()
+      //window.location.href = "/login"
     })
   },
   data(){

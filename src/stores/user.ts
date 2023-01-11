@@ -26,7 +26,7 @@ export const useUserStore = defineStore("user", {
                 onAuthStateChanged(auth, (user) => {
                     if(user) {
                         this.connected = true
-                        resolve();
+                        resolve(user);
                     }else{
                         //window.location.href = "/products"
                         reject();

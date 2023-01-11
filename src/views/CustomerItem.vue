@@ -10,7 +10,7 @@
         <div class="order" v-for="order in orders" :key="order.id">
             <p>Ref commande: <b>{{ order.id }}</b> fait {{dateOrder(order.date)}}</p>
             <div>Status commande
-                <select v-model="order.status">
+                <select v-model="order.status" @change="changeStatus(order)">
                     <option value="progress">en cours</option>
                     <option value="finish">Finit</option>
                 </select>
@@ -27,7 +27,7 @@
 import FormInput from "../components/FormInput.vue";
 import FormRow from "../components/FormRow.vue";
 import { db } from "../firebaseConfig"
-import { collection, getDocs, query, where, doc, getDoc, deleteDoc} from "firebase/firestore"
+import { collection, getDocs, query, where, doc, getDoc, deleteDoc, updateDoc} from "firebase/firestore"
 import ContentBtn from "../components/ContentBtn.vue";
 import ButtonApp from "../components/ButtonApp.vue";
 import moment from "moment"
@@ -73,6 +73,21 @@ export default {
             const time = new Date(timestamp)
 
             return moment(time).format("DD/MM/YYYY à HH:mm:ss")
+        },
+        changeStatus(order){
+            updateDoc(doc(db, "orders", order.id), {status: order.status})
+            .then(() => {
+                this.$notify({
+                    type: "success",
+                    text: "Le status de la commande est bien changé"
+                })
+            })
+            .catch((error) => {
+                this.$notify({
+                    type: "error",
+                    text: error.message
+                })
+            })
         }
     }
 }
