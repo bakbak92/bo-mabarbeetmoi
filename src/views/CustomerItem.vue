@@ -57,6 +57,9 @@ export default {
                 console.log(docRef.data())
                 this.orders.push(docRef.data())
             })
+            this.orders.sort((a, b) => {
+                return new Date(a.date.toMillis).valueOf() - new Date(a.date.toMillis).valueOf()
+            }).reverse()
         }).catch((error) => {
             console.log(error.code, error.message)
         })

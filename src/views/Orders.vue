@@ -40,6 +40,9 @@ export default {
                     }
                     orders.push(order)
                 })
+                orders.sort((a, b) => {
+                    return new Date(a.date.toMillis).valueOf() - new Date(a.date.toMillis).valueOf()
+                }).reverse()
             });
         })
         const orderDate = (date) => {
