@@ -13,7 +13,7 @@
                         <option :value="null">Selectionner une categorie</option>
                         <option v-for="category in categories" 
                         :key="category.id" 
-                        :value="category.id">
+                        :value="category.name">
                             {{category.name}}
                         </option>
                     </select>

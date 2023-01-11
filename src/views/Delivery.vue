@@ -57,7 +57,7 @@ export default {
             if(!confirm("Etes vous sur de modifier le prix de livraison de la zone " + delivery.zone)){
                 return 
             }
-            setDoc(doc(db, "delivery", delivery.id), {price: delivery.price})
+            setDoc(doc(db, "delivery", delivery.id), {price: delivery.price}, {merge: true})
             .then(() => {
                 notify({
                     type: "success",

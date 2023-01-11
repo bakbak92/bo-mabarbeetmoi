@@ -16,7 +16,7 @@
             <tbody>
                 <tr v-for="product in products" :key="product.id" @click="$router.push(`/products/${product.id}`)">
                     <td>{{product.name}}</td>
-                    <td>{{categories[product.category] ? categories[product.category].name : null}}</td>
+                    <td>{{product.category}}</td>
                     <td>{{product.price}}</td>
                     <td>
                         <span class="status" 
@@ -40,22 +40,16 @@ export default {
         }
     },
     mounted(){
-        const dbCategories = collection(db, "categories");
         const dbProducts = collection(db, "products");
-        getDocs(dbCategories).then((snapshots) => {
+        getDocs(dbProducts).then((snapshots) => {
             snapshots.forEach((doc) => {
-                this.categories[doc.id] = doc.data();
+                const product = {
+                    id: doc.id,
+                    ...doc.data()
+                }
+                this.products.push(product)
             })
-            getDocs(dbProducts).then((snapshots) => {
-                snapshots.forEach((doc) => {
-                    const product = {
-                        id: doc.id,
-                        ...doc.data()
-                    }
-                    this.products.push(product)
-                })
-            });
-        })
+        });
     }
 }
 </script>
